@@ -33,7 +33,9 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'HomeController::index');
-$routes->get('/stb', 'StBController::index');
+$routes->get('stb', 'StBController::index', ['as' => 'stb.view']);
+$routes->get('stb/edit/(:num)', 'StBController::edit/$1', ['as' => 'stb.edit']);
+$routes->get('stb/delete/(:num)', 'StBController::delete/$1', ['as' => 'stb.delete']);
 
 /*
  * --------------------------------------------------------------------
