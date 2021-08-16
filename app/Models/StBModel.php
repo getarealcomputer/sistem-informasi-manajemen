@@ -5,7 +5,7 @@ namespace App\Models;
 use CodeIgniter\Model;
 
 class StBModel extends Model{
-  protected $table = 'lokasi';
+  protected $table = 'stasiun';
 
   protected $primaryKey = 'id';
 

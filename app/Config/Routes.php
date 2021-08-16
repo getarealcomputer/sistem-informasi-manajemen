@@ -33,8 +33,16 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'HomeController::index');
-$routes->get('stb', 'StBController::index', ['as' => 'stb.view']);
-$routes->get('stb/edit/(:num)', 'StBController::edit/$1', ['as' => 'stb.edit']);
+
+$routes->get('users', 'UsersController::index', ['as' => 'users.lists']);
+$routes->match(["get", "post"], 'add-user', 'UsersController::addUser', ['as' => 'users.add']);
+$routes->match(["get", "post"], 'edit-user/(:num)', 'UsersController::editUser/$1', ['as' => 'users.edit']);
+$routes->get('delete-user/(:num)', 'UsersController::deleteUser/$1', ['as' => 'users.delete']);
+
+
+$routes->get('stb', 'StBController::index', ['as' => 'stb.lists']);
+$routes->match(["get", "post"], 'stb/create', 'StBController::create', ['as' => 'stb.create']);
+$routes->match(["get", "post"], 'stb/edit/(:num)', 'StBController::edit/$1', ['as' => 'stb.edit']);
 $routes->get('stb/delete/(:num)', 'StBController::delete/$1', ['as' => 'stb.delete']);
 
 /*

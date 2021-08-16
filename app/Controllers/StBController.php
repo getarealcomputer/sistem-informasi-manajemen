@@ -8,10 +8,27 @@ use Config\Services;
 class StBController extends BaseController
 {
   public function index(){
-    $this->model = new StBModel();
-    $data['model'] = $this->model->findAll();
+    $model = new StBModel();
+    $data['model'] = $model->findAll();
 
-    return view('stb/view', $data);
+    return view('stb/lists', $data);
+  }
+
+  public function create(){
+    $model = new StBModel();
+
+    if($this->request->getMethod() === "post"){
+      $data = [
+        'nama_stasiun' => $this->request->getVar('name'),
+        'nama_stasiun' => $this->request->getVar('name'),
+        'nama_stasiun' => $this->request->getVar('name'),
+        'nama_stasiun' => $this->request->getVar('name'),
+        'nama_stasiun' => $this->request->getVar('name'),
+        'nama_stasiun' => $this->request->getVar('name'),
+      ];
+    }
+
+    return view('stb/*');
   }
 
   public function edit(){
@@ -21,8 +38,8 @@ class StBController extends BaseController
 
   public function delete(){
     $this->model = new StBModel();
-    $this->req = Services::request();
-    $id = $this->req->uri->getSegment(3);
+    $req = Services::request();
+    $id = $req->uri->getSegment(3);
     if($this->model->delete($id)){
       return redirect()->to(base_url('stb'));
     }
