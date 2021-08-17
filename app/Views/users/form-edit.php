@@ -38,25 +38,25 @@
               <form class="form-horizontal" method="post" action="<?= route_to('users.edit', $user['id_user']); ?>">
                 <div class="card-body">
                   <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-2 col-form-label">Nomor Induk</label>
+                    <label for="username" class="col-sm-2 col-form-label">Nomor Induk</label>
                     <div class="col-sm-10">
                       <input name="username" value="<?php echo $user['username']?>" type="text" inputmode="number" pattern="[0-9]{16" class="form-control" id="" placeholder="Nomor Induk" style="-webkit-appearance: none; -moz-appearance:textfield;" oninvalid="this.setCustomValidity('Harap masukkan angka')" oninput="this.setCustomValidity('')">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Kata Sandi</label>
+                    <label for="passphrase" class="col-sm-2 col-form-label">Kata Sandi</label>
                     <div class="col-sm-10">
                       <input name="passphrase" value="<?php echo $user['passphrase']?>" type="password" class="form-control" id="" placeholder="Kata Sandi">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Role</label>
+                    <label for="role" class="col-sm-2 col-form-label">Role</label>
                     <div class="col-sm-10">
                       <input name="role" value="<?php echo $user['role']?>" type="text" class="form-control" id="" placeholder="Role">
                     </div>
                   </div>
                   <div class="form-group row">
-                    <label for="inputPassword3" class="col-sm-2 col-form-label">Surel</label>
+                    <label for="email" class="col-sm-2 col-form-label">Surel</label>
                     <div class="col-sm-10">
                       <input name="email" value="<?php echo $user['email']?>" type="email" class="form-control" id="" placeholder="Surel">
                     </div>
@@ -72,7 +72,7 @@
                 </div>
                 <!-- /.card-body -->
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-info">Tambah</button>
+                  <button type="submit" class="btn btn-info">Sunting</button>
                 </div>
                 <!-- /.card-footer -->
               </form>

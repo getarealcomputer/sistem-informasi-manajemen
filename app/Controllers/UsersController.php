@@ -27,7 +27,7 @@ class UsersController extends BaseController
         return view('users/form', [
           "validation" => $this->validator,
         ]);
-      } else {
+      }else{
         $model = new UsersModel();
         $data = [
           'username' => $this->request->getVar('username'),
@@ -48,22 +48,21 @@ class UsersController extends BaseController
   public function editUser($id = null){
     $model = new UsersModel();
 
-    $data['user'] = $model->where("id_user", $id)->first();
+    $user = $model->where("id_user", $id)->first();
 
-    if ($this->request->getMethod() == "post") {
-
+    if($this->request->getMethod() == "post"){
       $rules = [
         'username' => "required|min_length[16]|max_length[16]",
         'passphrase' => 'required|min_length[9]|max_length[25]',
         'role' => 'required',
         'email' => 'required|valid_email',
       ];
-
       if (!$this->validate($rules)) {
         return view('users/form-edit', [
-          "validation" => $this->validator,
+          'validation' => $this->validator,
+          'user' => $user
         ]);
-      } else {
+      }else{
         $data = [
           'username' => $this->request->getVar('username'),
           'passphrase' => $this->request->getVar('passphrase'),
@@ -74,10 +73,10 @@ class UsersController extends BaseController
         $model->update($id, $data);
         $session = session();
         $session->setFlashdata("success", "User updated successfully");
-        return redirect()->to(base_url('users/form-edit'));
+        return redirect()->to(base_url('users'));
       }
     }
-    return view('users/form-edit', $data);
+    return view('users/form-edit', ['user' => $user]);
   }
 
   public function deleteUser($id = null){
